@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Add new Post {% endblock %}
+
+{% block content %}
+
+<h2>Add Post:</h2>
+<form method="POST" action="{% url 'add_post' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Create New Post" />
+</form>
+
+
+{% endblock %}
