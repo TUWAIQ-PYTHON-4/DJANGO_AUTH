@@ -1,0 +1,51 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} Blog Details {% endblock %}
+{% block content %}
+ <div class="container">
+
+<img src="{{ post.image.url }}" />
+<h1>{{ post.title }}</h1>
+
+<h3>Post info:</h3>
+<p>
+    {{ post.content }}
+
+</p>
+
+<h4>Comments: </h4>
+
+{% for comment in  post.comment_set.all %}
+
+<div class="card w-75">
+  <div class="card-body">
+    <h5 class="card-title">{{ comment.name }}</h5>
+    <p class="card-text">{{ comment.comment }}</p>
+    <a href="#" class="btn btn-primary">Button</a>
+  </div>
+</div>
+ <div class="card-footer text-muted">
+   Commented on {{ comment.date }}
+  </div>
+</div>
+{% endfor %}
+
+
+<form action="{% url 'blog:detail' {{post.id}} %'}" method="POST" >
+    {% csrf_token %}
+
+    <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+    <div class="input-group">
+  <span class="input-group-text">Add Comment</span>
+  <textarea class="form-control" aria-label="With textarea"></textarea>
+        <input type="submit" class="btn btn-primary" value="Post Comment">
+</div>
+</form>
+
+</div>
+
+{% endblock %}
