@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} The index  {% endblock %}
+
+{% block content %}
+
+<h1>Just a random movies page</h1>
+
+{% if display %}
+
+{% for post in Post %}
+
+<div class="row">
+
+    <div class="card">
+        <img src="{{ post.photo.url }}" />
+        <p>
+            <h2>{{ Post.title }}</h2>
+
+
+        </p>
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+
+
+
+{% endblock %}
