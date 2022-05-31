@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+
+
+<header>
+
+        <div class="nav-bar row" >
+            <h2>Blog</h2>
+            {% if user.is_authenticated %}
+            <h4>Hello{{ user.username }}</h4>
+            {% endif %}
+
+            {% if perms.blog.add %}
+            <a href="/add"> Add Blog </a>
+            {% endif %}
+        </div>
+
+    </header>
+
+{% block content %}
+{% if display %}
+{% for blog in context %}
+
+<div class="card">
+    <img src="{{blog.image.url}}">
+    <p>
+        <h2>{{blog.title}}</h2>
+        <h2>{{blog.date}}</h2>
+    <h5><a href="{% url 'blogapp:detail' blog.id %}"> show details </a></h5>
+    </p>
+
+
+</div>
+{% endfor %}
+{% endif %}
+
+
+
+{% endblock %}
+
+</body>
+</html>
