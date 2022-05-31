@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} Add Post {% endblock %}
+
+
+{% block content %}
+
+<h2>Add Post:</h2>
+<form method="POST" action="{% url 'blogs:add_post' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Post Title</span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+    <div class="input-group">
+  <span class="input-group-text">Post Content</span>
+  <textarea class="form-control" aria-label="With textarea"></textarea>
+
+</div>
+
+    <div class="input-group mb-3">
+  <input type="file" class="form-control" id="inputGroupFile02">
+  <label class="input-group-text" for="inputGroupFile02">Upload Image</label>
+</div>
+
+    <div class="col-auto">
+    <button type="submit" class="btn btn-primary">Add Post</button>
+  </div>
+</form>
+
+{% endblock %}
