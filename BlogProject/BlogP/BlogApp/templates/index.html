@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} The index  {% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+<h2>The Blogs :</h2>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Blog Title</th>
+          <th>Blog Image </th>
+        <th>Blog Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for blog in Posts %}
+    <center>
+    <tr>
+        <td>  <a href="/comment/{{ blog.id }} "><span class="link-secondary" >{{blog.title}}</span></a></td>
+        <td><img class="blog_image" src="{{ blog.image.url }}" class="card-img-top" alt="..."></td>
+        <td>{{blog.date}}</td>
+    </tr>
+    </center>
+    {% endfor%}
+    </tbody>
+</table>
+
+ <h5><a href="/add/" class="link-secondary" >Add New Post</a></h5>
+
+<style>
+    .blog_image{
+       height: 300px;
+        width: 250px;
+    }
+    td {
+  text-align: center;
+}
+</style>
+{% endblock %}

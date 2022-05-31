@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<table class="table table-bordered">
+
+    <thead>
+<tr><th><h3>Post Information:</h3></th></tr>
+    </thead>
+    <tbody>
+
+    <tr><td>{{ post.title }}</td></tr>
+    <tr><td><img class="post_img" src="{{ post.image.url }}" ></td></tr>
+    <tr><td>{{post.content}}</td></tr>
+    <tr><td>{{post.date}}</td></tr>
+    </tbody>
+</table>
+<h3>Post Comments:</h3><br>
+    <p>
+     {% for comment in  post.comment_set.all %}
+ <h6>{{ comment.first_name }}<br></h6>
+       <h6> {{comment.content}}<br></h6>
+        <h6>{{comment.date}}<br></h6>
+    </p>
+{%endfor%}
+    <h4>Add your comment :</h4>
+<form calss="cemment" action="{% url 'comment' post.id %}" method="POST" >
+    {% csrf_token %}
+     {{ form|crispy }}
+
+    <input value="Submit Comment" type="submit" />
+</form>
+
+<style>
+h5 ,h6,p{
+ text-align: left;
+ font-size: 15px;
+  color: #B0AFAB;
+  text-indent: 30px;
+
+}
+h3,h4{text-align: left;}
+}
+table {
+       height: 300px;
+        width: 250px;
+    }
+    td {
+  text-align: center;
+}
+.post_img{
+    height: 500px;
+    width: 380px;
+}
+.th{
+ text-align: left;
+ }
+</style>
+{% endblock %}
