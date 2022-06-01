@@ -1,0 +1,31 @@
+<h1>The blog</h1>
+
+{% if display %}
+
+{% for post in posts %}
+
+        <img src="{{ post.image.url }}" />
+        <h2>{{ post.title }}</h2>
+        <h2>{{ post.date }}</h2>
+        <h2>{{ post.content }}</h2>
+
+
+{% endfor %}
+
+{% endif %}
+<h1>The comment</h1>
+{% if display %}
+
+{% for post in comments %}
+
+        <img src="{{ post.image.url }}" />
+        <h2>{{ post.first_name }}</h2>
+        <h2>{{ post.date }}</h2>
+        <h2>{{ post.content }}</h2>
+
+
+{% endfor %}
+
+{% endif %}
+
+<a href="{% url 'add_post' %}"><input type="submit" value="add post"></a>
