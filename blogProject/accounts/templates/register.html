@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}      
+<h3 class=" pd-3 mb-6 mt-5 mr-5 ml-5"> login </h3>
+    <div class="border p-4 mr-5 ml-5 ">
+        <form action="{% url 'Register' %}" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+<input class= "btn btn-secondary" value="Register" type="submit">
+</form>
+</div> 
+{% endblock %}
