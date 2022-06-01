@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+
+{% block contint  %}
+<table class="table table-dark table-striped table-hover">
+{% for item in posts %}
+<tr class="table-dark">
+ <td class="table-dark"><img src="{{ item.image.url }}" class="img-fluid" ></td>
+ <td class="table-dark">{{item.date}}</td>
+ <td class="table-dark"><a href="{% url 'post' item.id %}">{{item.title}}</a></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock%}

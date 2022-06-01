@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Post | Info</title>
+{% endblock %}
+
+{% block contint  %}
+
+
+
+<div class="card" style=" margin-bottom:4rem">
+  <img src="{{ post_info.image.url }}" class="card-img-top">
+  <div class="card-body">
+    <h2 class="card-title">{{post_info.title}}</h2>
+    <small>{{post_info.date}}</small>
+    <h4 class="card-text">{{post_info.content}}</h4>
+  </div>
+</div>
+<h5>Commints</h5>
+{% for item in post_commints %}
+<ul class="list-group">
+  <li class="list-group-item">{{item.first_name}}</br>{{item.date}}</br>{{item.content}}</li>
+</ul>
+{% endfor %}
+
+{% endblock%}
