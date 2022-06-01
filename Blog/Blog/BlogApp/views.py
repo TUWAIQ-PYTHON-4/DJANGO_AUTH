@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 from django.shortcuts import render, redirect, resolve_url
-from .models import Post , Comment
+from .models import Post, Comment
 from .forms import addForm, addComment
 
 
@@ -19,13 +19,12 @@ def detail(request: HttpRequest, post_id):
 
     session_content = request.session.get("detail", None)
     if request.method == "POST":
-        comment_form =addComment(request.POST)
+        comment_form = addComment(request.POST)
         if comment_form.is_valid():
-            added_comment = Comment(first_name=request.user,**comment_form.cleaned_data)
+            added_comment = Comment(first_name=request.user, **comment_form.cleaned_data)
             added_comment.save()
 
-    context = {'post': post,'added_comment':added_comment}
-
+    context = {'post': post, 'added_comment': added_comment}
 
     return render(request, 'detail.html', context)
 
