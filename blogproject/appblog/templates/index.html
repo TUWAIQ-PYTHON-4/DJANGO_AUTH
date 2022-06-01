@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} index-Page
+{% endblock %}
+
+{% block content %}
+
+<div class ="container">
+<ul>
+    {% for i in all_post %}
+            <li><strong>post title:</strong> {{ i.title }}          </li>
+            <li><strong>post description:</strong> {{i.description}}    </li>
+
+            <br>
+            <br>
+            <br>
+    {% endfor %}
+
+</ul>
+
+</div>
+
+{% endblock %}
