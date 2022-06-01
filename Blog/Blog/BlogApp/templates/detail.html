@@ -1,0 +1,59 @@
+{%extends 'index.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% block content %}
+<img src="{{ blog.image.url }}" />
+<h1>{{ post.title }}</h1>
+
+<h3>Blog content:</h3>
+<p>
+    {{ blog.content }}
+
+</p>
+<br>
+<h4>Written By : {{ blog.user.username }}</h4>
+<br>
+<h4>Published at : {{ blog.date }}</h4>
+
+<h4>Comments : </h4>
+
+{% for comment in  added_comment %}
+
+<br>
+<br>
+
+<p>
+    <strong>{{ comment.first_name }}</strong>
+    <p>
+        {{ comment.email }}
+    </p>
+    <p>
+        {{ comment.content }}
+    </p>
+</p>
+
+{% endfor %}
+
+<br>
+
+<h3> Add Comment :</h3>
+<form action="{% url 'movies:movie_detail' movie.id %}" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Comment" type="submit" />
+</form>
+
+{% endblock %}
+
+{% endblock %}
+
+</body>
+</html>
