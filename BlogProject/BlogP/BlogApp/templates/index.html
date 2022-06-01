@@ -27,9 +27,9 @@
     {% endfor%}
     </tbody>
 </table>
-
+{% if perms.blog.add %}
  <h5><a href="/add/" class="link-secondary" >Add New Post</a></h5>
-
+{% endif %}
 <style>
     .blog_image{
        height: 300px;
