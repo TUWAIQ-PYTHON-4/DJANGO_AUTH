@@ -16,3 +16,19 @@
 
 
 Note : use .gitignore to not inclue the folder "venv" in the repo.
+
+### what an unregistered visioter will see.
+![Screenshot (412)](https://user-images.githubusercontent.com/63616896/171518304-235ab6e7-4fb5-4762-bb44-17d0bcb3bd19.png)
+
+
+### what a registered user in editor group will see.
+![Screenshot (413)](https://user-images.githubusercontent.com/63616896/171518370-0d114b71-6ea0-44af-895b-868a27700fad.png)
+
+![Screenshot (414)](https://user-images.githubusercontent.com/63616896/171518428-5a316748-a86f-4b7d-b64b-7dbe25268b24.png)
+
+### Post details 
+![Screenshot (415)](https://user-images.githubusercontent.com/63616896/171518487-c017a281-fe78-43dd-b5bf-e11338e511f9.png)
+![Screenshot (416)](https://user-images.githubusercontent.com/63616896/171518558-94674bde-c8fa-441b-9297-00688bc2b0b3.png)
+![Screenshot (417)](https://user-images.githubusercontent.com/63616896/171518608-f19c8a6e-1f26-4ca2-9193-36ee2c0a2cff.png)
+
+
