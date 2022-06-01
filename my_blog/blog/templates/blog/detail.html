@@ -1,0 +1,41 @@
+
+{% extends 'blog/base.html'%}
+{% block content %}
+{% load crispy_forms_tags %}
+<br><br>
+
+
+
+
+<main class="container">
+  <div class="bg-light p-5 rounded mt-3">
+    <img src="{{ post.image }}" class="card-img-top" alt="...">
+    <h4>{{post.title}}</h4>
+      <h6 class="card-title" align="rigth">{{post.content}}  </h6>
+      <h6 class="card-title" align="rigth">{{post.post_date}}  </h6>
+  </div>
+</main>
+
+<br><br>
+
+
+<!-- display comment -->
+<div>
+  <h4>COMMENT:</h4>
+  {% for comment in comments%}
+  <small>{{comment.first_name}} | {{comment.date}}</small>
+  <p>{{comment.content}}</p>
+  {% endfor %}
+</div>
+<hr>
+<br>
+<!-- add comment -->
+<h3>ADD COMMENT:</h3>
+<form method="POST">
+  {% csrf_token %} <!-- protocoal my form -->
+  {{comment_form|crispy}} <!-- use crispy form -->
+  <input type="submit" value="ADD COMMENT">
+</form>
+
+
+{% endblock %}
