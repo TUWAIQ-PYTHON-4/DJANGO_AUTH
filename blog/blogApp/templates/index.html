@@ -1,0 +1,24 @@
+
+{% block title %} Blogs | Posts {% endblock %}
+{% block content %}
+
+<h1> {{ Post.content }}</h1>
+
+{% for blog in posts %}
+
+<div class="row">
+
+    <div class="card">
+        <p>
+            <img src="{{ blog.image.url }}" class="card-img-top" alt="...">
+            <h3>{{ blog.title }}</h3>
+                {{ blog.date }}
+            <h6><a href="{% url 'detail' blog.id %}"> > show details </a></h6>
+        </p>
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

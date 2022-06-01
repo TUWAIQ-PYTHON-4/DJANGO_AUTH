@@ -1,0 +1,14 @@
+{% load static %}
+{% block title %} Add new Post {% endblock %}
+
+{% block content %}
+
+
+<form method="POST" action="{% url 'addPost' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Create New Post" />
+</form>
+
+
+{% endblock %} 
