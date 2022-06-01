@@ -1,0 +1,40 @@
+{% load static %}
+{% block title %} Blogs | Details {% endblock %}
+{% block content %}
+<div class="container">
+
+<br>
+<img src="{{ post.image.url }}" class="card-img-top" alt="...">
+<br>
+<h5>Post content:</h5> {{ Post.content }}
+<br>
+<h6>date :  {{ Post.date }}</h6>
+<br>
+<h4>Comments : </h4>
+<br>
+{% for Comment in  post.Comment_set.all %}
+
+<br>
+<br>
+
+<p>
+    <strong>{{ Comment.first_name }}</strong>
+    <p>
+        {{ Comment.content }}
+    </p>
+    {{ Comment.date }}
+</p>
+
+{% endfor %}
+
+<br>
+
+
+<form action="{% url 'detail' Post.title %}" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Comment" type="submit" />
+</form>
+</div>
+{% endblock %} 
