@@ -1,0 +1,13 @@
+{% block title %} Add new Movie {% endblock %}
+
+{% block content %}
+
+<strong>add post:</strong>
+<form method="POST" action="{% url 'add_post' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" />
+</form>
+
+
+{% endblock %}
