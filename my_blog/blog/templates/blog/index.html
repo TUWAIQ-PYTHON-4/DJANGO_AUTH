@@ -1,0 +1,30 @@
+{% extends 'blog/base.html'%}
+{% block content %}
+<br><br>
+<h3>BLOGS</h3>
+{% if messages%}
+{%for message in messages %}
+<div>
+    {{message}}
+</div>
+{%endfor%}
+{%endif%}
+
+
+{% for post in posts %}
+<main class="container">
+
+  <div class="bg-light p-5 rounded mt-3">
+  <img src="{{ post.image }}" class="card-img-top" alt="...">
+    <h4>{{post.title}}</h4>
+      <h6 class="card-title" align="rigth">{{post.post_date}}  </h6>
+    <a class="btn btn-lg btn-primary" href="{% url 'detail' post.id %}" role="button">SHOW DETAIL</a>
+
+  </div>
+</main>
+   {% endfor %}
+
+
+{% endblock %}
+
+
