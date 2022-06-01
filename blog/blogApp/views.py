@@ -9,21 +9,21 @@ def index(request):
     return render(request,'index.html', context)
 
 def post(request, post_id):
+    form = CommentForm()
     post_info = Post.objects.get(id = post_id)
     post_commints = Comment.objects.filter(post = post_info)
-    context = {'post_info': post_info, 'post_commints': post_commints}
-    return render(request,'post.html', context)
 
-def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login')
-    else:
-        form = UserCreationForm()
-    context = {'form': form}
-    return render(request, 'register.html',context )
+     form = CommentForm(request.POST)
+     if form.is_valid():
+         commint = Comment.objects.create(post_id = post_id, first_name =  request.POST['first_name']
+                                          ,email= request.POST['email'] , content = request.POST['content'])
+         return redirect('index')
+     else:
+         form = CommentForm()
+
+    context = {'post_info': post_info, 'post_commints': post_commints, 'form': form}
+    return render(request,'post.html', context)
 
 def add_post(request):
     if request.method == 'POST':
@@ -36,6 +36,19 @@ def add_post(request):
         form = PostForm()
     context = {'form': form}
     return render(request, 'post_form.html',context )
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    context = {'form': form}
+    return render(request, 'register.html',context )
+
+
 
 
 

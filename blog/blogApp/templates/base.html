@@ -12,7 +12,7 @@
   <body>
          <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #fff;" >
   <div class="container">
-    <a class="navbar-brand" href="{% url 'register'%}">
+    <a class="navbar-brand" href="{% url 'index'%}">
         BLOG
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,11 +41,17 @@
     </div>
   </div>
 </nav>
-
+<br><br><br>
   <div class="container-sm" style="">
     {% block contint  %}
     {% endblock %}
   </div>
+         <br><br><br>
+  <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Your Website</small>
+    </div>
+  </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </body>
 </html>
