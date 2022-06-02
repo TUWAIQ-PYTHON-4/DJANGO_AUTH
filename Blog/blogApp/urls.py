@@ -1,10 +1,11 @@
 from django.urls import path
 from . import views
-
-# add namespace for the app
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path("", views.Blog, name="index"),
-    path("showDetails/<int:id>", views.ShowDetials, name='showDetails'),
-    path("comment/<int:id>",views.Comment,name='comment')
-]
+                  path('', views.index, name='home'),
+                  path('post<int:id>', views.post_infor, name="post"),
+                  path('push_post', views.push_post, name="push_post"),
+
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
