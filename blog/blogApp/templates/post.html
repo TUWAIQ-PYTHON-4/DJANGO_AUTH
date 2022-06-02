@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% crispy example_form example_form.helper %}
+
+{% block title %}
+    <title>Post | Info</title>
+{% endblock %}
+
+{% block contint  %}
+
+
+
+<div class="card" style=" margin-bottom:4rem; border:none;">
+  <img src="{{ post_info.image.url }}" class="card-img-top" style="float: left; width:100vh;
+   margin-left:auto; margin-right:auto; height:60vh; object-fit:cover">
+  <div class="card-body" >
+  <div style="margin-left:auto; margin-right:auto;
+width:100vh;" >
+    <h2 class="card-title">{{post_info.title}}</h2>
+    <small>{{post_info.date}}</small>
+    <h4 class="card-text">{{post_info.content}}</h4>
+  </div></div>
+</div >
+
+<div style="">
+   <div style="margin-left:auto; margin-right:auto;
+width:100vh;" >
+<h5>Commints</h5>
+
+
+{% for item in post_commints %}
+<ul >
+  <li class="list-group-item">{{item.first_name}}</br>{{item.date}}</br>{{item.content}}</li>
+</ul>
+{% endfor %}
+
+  <form method="POST">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit" class="btn btn-danger btn-sm" style="margin-top:0.5rem;">Add</button>
+   </form>
+
+
+
+   </div>
+</div>
+
+{% endblock%}

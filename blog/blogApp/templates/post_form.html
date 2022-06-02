@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% crispy example_form example_form.helper %}
+   {% block title %}
+    <title>Post | Add</title>
+    {% endblock %}
+
+
+{% block contint %}
+<div style="max-width: 30%; margin-left: auto; margin-right: auto; height:60vh">
+    <h1>ADD THEN POST </h1><br>
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit" class="btn btn-outline-dark btn-sm" style="margin-top:0.5rem;">Add</button>
+</form>
+</div>
+{% endblock %}

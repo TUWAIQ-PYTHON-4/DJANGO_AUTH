@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% crispy example_form example_form.helper %}
+
+   {% block title %}
+    <title>Login</title>
+    {% endblock %}
+
+{% block contint %}
+<div style="max-width: 30%; margin-left: auto; margin-right: auto; height:60vh">
+    <h1>Welcome Back...</h1><br>
+<form method="POST">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit" class="btn btn-outline-dark btn-sm" style="margin-top:0.5rem;">Login</button>
+</form>
+    <small>Need an account? <a href="{% url 'register' %}">Register</a>
+    </small>
+</div>
+{% endblock %}
