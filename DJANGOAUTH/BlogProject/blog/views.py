@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.shortcuts import render, redirect, resolve_url
-from .forms import PostModelForm
-from BlogProject.blog.models import Post
+from .forms import PostModelForm, CommentForm
+from .models import Post, Comment
 
 
 def index(request : HttpRequest):
@@ -20,7 +20,7 @@ def index(request : HttpRequest):
 
 
 
-def add_movie(request : HttpRequest):
+def add_blog(request : HttpRequest):
 
 
     if not request.user.has_perm("blog.add_blog"):
@@ -29,7 +29,7 @@ def add_movie(request : HttpRequest):
     if request.method == 'POST':
         postModelForm = PostModelForm(request.POST, request.FILES)
 
-        if movieModelForm.is_valid():
+        if postModelForm.is_valid():
             #add model
             blog = Post(user=request.user,  **postModelForm.cleaned_data)
             blog.save()
@@ -39,6 +39,20 @@ def add_movie(request : HttpRequest):
     return render(request, 'add_blog.html', {"form" : form})
 
 
+def blog_detail(request: HttpRequest, blog_id):
+    blog = Post.objects.get(pk=blog_id)
 
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            added_comment = Comment(blog=blog, title=comment_form.cleaned_data["title"],
+                                    content=comment_form.cleaned_data["content"])
+            added_comment.save()
+        else:
+            print(comment_form.errors)
+
+    context = {"blog": blog, "form": CommentForm()}
+
+    return render(request, 'book_detail.html', context)
 
 

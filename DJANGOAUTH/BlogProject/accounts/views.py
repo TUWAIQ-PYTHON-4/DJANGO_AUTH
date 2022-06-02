@@ -23,7 +23,7 @@ def register_user(request: HttpRequest):
 
             return redirect(resolve_url('blog:index'))
 
-    return render(request, 'accounts/register.html', {'form': UserForm()})
+    return render(request, 'register.html', {'form': UserForm()})
 
 
 def login_user(request: HttpRequest):
@@ -43,9 +43,9 @@ def login_user(request: HttpRequest):
             else:
                 return redirect(resolve_url('accounts:login'))
 
-    return render(request, 'accounts/login.html', {'form': UserFormLogin()})
+    return render(request, 'login.html', {'form': UserFormLogin()})
 
-
+'''
 def add_blog_permission(requst: HttpRequest):
     if not requst.user.has_perm("blog.add_blog"):
         contentType = ContentType.objects.get_for_model(m.Post)
@@ -61,3 +61,4 @@ def add_to_group_editors(request: HttpRequest):
         request.user.groups.add(group)
 
     return HttpResponse("Added successfully")
+'''
