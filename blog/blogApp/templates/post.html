@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="border p-3 mb-3 mt-4 mr-5 ml-5">
+    <img class="img-fluid rounded-circle border m-2" style="width: 70px; height:70px;" src="{{ post.image.url}}" alt="user image">
+    <span class="text-secondary">  {{post.user}} created at  {{post.date|date:'d-m-Y'}}</span>
+    <h3>{{post.title}} </h3>
+    <p>{{post.content}}</p>
+</div>
+    <h1 class="border-bottom mt-5 mb-3 mr-5 ml-5"> comments </h1>
+    <div class="border-bottom mt-5 mb-3 mr-5 ml-5">
+    {% for comment in post.comments.all  %}
+    <small> {{comment.first_name}}  at  {{comment.date|date:'d-m-Y'}}</small>
+    <p>{{comment.content}}</p>
+    {% endfor %}
+    {% if not post.comments.all%}
+     <p> no comments yet...</p>
+    {% endif %}
+    </div>
+    <h3 class=" pd-3 mb-6 mt-5 mr-5 ml-5"> Add comment</h3>
+    <div class="border p-4 mr-5 ml-5 ">
+        <form method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+         <input class= "btn btn-secondary"type="submit" value="send">
+    </form>
+   </div>
+{% endblock content %}
