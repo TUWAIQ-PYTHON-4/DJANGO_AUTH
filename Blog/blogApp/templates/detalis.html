@@ -1,0 +1,33 @@
+{%  extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Content</th>
+      <th scope="col">First name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{blog.id}}</th>
+      <td><img src="{{blog.image}}" width="150" height="100"></td>
+      <td>{{blog.title}}</td>
+      <td>{{blog.date}}</td>
+      <td>{{blog.content}}</td>
+
+      <td>{{comment.first_name}}</td>
+      <td>{{comment.date}}</td>
+      <td>{{comment.content}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+{% endblock %}

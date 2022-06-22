@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+     <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{ post_infor.id }}</th>
+      <td><img src="{{ post_infor.image.url }}" width="150" height="100" /></td>
+      <td>{{post_infor.title}}</td>
+      <td>{{ post_infor.date }}</td>
+      <td>{{ post_infor.content }}</td>
+    <br/>
+       <tr>
+      <th scope="col">firstname</th>
+      <th scope="col">Date</th>
+      <th scope="col">Content</th>
+      </tr>
+      {% for i in post_commint %}
+      <tr>
+      <td>{{ i.first_name }}</td>
+      <td>{{ i.date }}</td>
+      <td>{{ i.content }}</td>
+      </tr>
+      {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
+{% endblock %}
+
